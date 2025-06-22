@@ -123,7 +123,7 @@ function App() {
 
   const analyzeCode = async () => {
     setIsLoading(true);
-    const response = await axios.post("http://localhost:3000/ai/get-res", {
+    const response = await axios.post("https://ai-code-analyzer-zuqm.onrender.com/ai/get-res", {
       code,
     });
     setIsLoading(false);
