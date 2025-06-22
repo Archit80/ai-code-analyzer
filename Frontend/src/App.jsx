@@ -137,12 +137,12 @@ function App() {
 
   return (
     <>
-      <main className=" bg-grid flex h-screen w-screen flex-col items-center justify-center gap-4 bg-background p-4  ">
-        <h1 className="text-5xl font-heading">AI Code Analyzer</h1>
+      <main className=" bg-grid flex h-screen w-screen flex-col items-center justify-center gap-4 bg-background p-4  overflow-auto">
+        <h1 className="text-5xl font-heading mt-4 md:mt-0">AI Code Analyzer</h1>
 
-        <div className="flex w-full h-full gap-4 text-black">
-          <div className="max-h-[88vh] min-h-[300px] w-1/2 relative rounded-base border-[2px] border-border bg-[#FFE0E3] p-2 shadow-[4px_3px_0px_0px_var(--border)]">
-            <div className="overflow-auto max-h-[82vh] min-h-[300px]">
+        <div className="flex w-full h-full gap-4 text-black flex-col md:flex-row">
+          <div className="max-h-[88vh] min-h-[300px] w-full md:w-1/2 relative rounded-base border-[2px] border-border bg-[#FFE0E3] p-2 shadow-[4px_3px_0px_0px_var(--border)] h-1/2 md:h-full">
+            <div className="flex-1 min-h-[200px] max-h-[82vh] overflow-auto">
               <Editor
                 value={code}
                 onValueChange={(code) => setCode(code)}
@@ -154,7 +154,7 @@ function App() {
                   )
                 }
                 padding={12}
-                className="w-full min-h-[82vh] z-1 h-full font-mono font-semibold text-md text-foreground selection:bg-main selection:text-main-foreground outline-none border-none whitespace-pre focus:border-none focus:outline-none"
+                className="w-full min-h-[200px] font-mono font-semibold text-md text-foreground selection:bg-main selection:text-main-foreground outline-none border-none whitespace-pre focus:border-none focus:outline-none bg-transparent"
               />
             </div>
             <Button
@@ -166,10 +166,10 @@ function App() {
             </Button>
           </div>
 
-          <Card className="w-1/2 h-full max-h-[88vh] min-h-[300px] bg-white ">
-            <CardContent className="-mt-4">
+          <Card className="w-full md:w-1/2 h-full max-h-[88vh] min-h-[300px] bg-white ">
+            <CardContent className="-mt-4 h-full">
               <div
-                className={`flex flex-col gap-6 h-[82vh] min-h-[300px] items-center justify-center ${
+                className={`flex flex-col gap-6 h-full min-h-[300px] items-center justify-center ${
                   isLoading ? "overflow-hidden" : "overflow-auto"
                 }`}
               >
@@ -194,7 +194,7 @@ function App() {
                     <div className="w-12 h-12 border-4 border-main border-t-transparent rounded-full animate-spin mt-4"></div>
                   </div>
                 ) : (
-                  <div className="prose prose-lg max-w-none w-full h-full">
+                  <div className="prose prose-lg max-w-none w-full h-full overflow-auto">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeHighlight]}
