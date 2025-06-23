@@ -123,7 +123,7 @@ function App() {
 
   const analyzeCode = async () => {
     setIsLoading(true);
-    const response = await axios.post("http://localhost:3000/ai/get-res", {
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_API}/ai/get-res`, {
       code,
     });
     setIsLoading(false);

@@ -5,11 +5,11 @@ import dotenv from 'dotenv'; // Import dotenv to manage environment variables
 dotenv.config(); // Load environment variables from .env file
 const app = express(); // <- creates an instance of an Express server
 
-// app.use(cors({
-//   origin: ['http://localhost:5173', 'https://your-frontend-domain.com']
-// })); // <- enables CORS for these URLs
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://ai-code-analyzer-two.vercel.app/']
+})); // <- enables CORS for these URLs
 
-app.use (cors());
+// app.use (cors());
 app.use(express.json()); // <- middleware to parse JSON request bodies
 
 app.get('/', (req, res) => {
@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     res.send('Hello, World!', `${process.env.OPENROUTER_API_KEY}`); // <- responds with a simple message
  })
 
- 
+
 app.use('/ai', aiRoutes);
 
 export default app; // <- exports the app instance for use in other files
